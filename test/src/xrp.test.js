@@ -1,3 +1,5 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import { bip32asBuffer } from "./bip32";
 import Swap from "./Swap.js";
 import secp256k1 from "secp256k1";
