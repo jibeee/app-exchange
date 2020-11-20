@@ -3,7 +3,7 @@ import Swap from "./Swap.js";
 import secp256k1 from "secp256k1";
 import sha256 from "js-sha256";
 import "./protocol_pb.js";
-// import { getTransport, numberToBigEndianBuffer, swapTestPrivateKey, partnerSerializedNameAndPubKey, DERSignatureOfPartnerNameAndPublicKey, XRPConfig, XRPConfigSignature } from "./common";
+import { getTransport, numberToBigEndianBuffer, swapTestPrivateKey, partnerSerializedNameAndPubKey, DERSignatureOfPartnerNameAndPublicKey, XRPConfig, XRPConfigSignature } from "./common";
 
 
 export function getSerializedAddressParametersXRP(

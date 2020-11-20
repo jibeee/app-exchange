@@ -1,5 +1,3 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
 import HttpTransport from "@ledgerhq/hw-transport-http/lib/HttpTransport";
 import TransportNodeHid from "@ledgerhq/hw-transport-node-hid/lib/TransportNodeHid";
 
