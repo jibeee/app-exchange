@@ -20,7 +20,10 @@ const sim_options = {
 };
 const Resolve = require("path").resolve;
 const APP_PATH = Resolve("elfs/exchange.elf");
-const XTZ_LIB = { "XTZ": Resolve("elfs/tezos.elf") };
+const XTZ_LIB = { "Tezos": Resolve("elfs/tezos.elf") };
+const DERIVATION_PATH = "44'/1729'/0'/0/0";
+const VALID_PAYOUT_ADDRESS = "tz1RVYaHiobUKXMfJ47F7Rjxx5tu3LC35WSA";
+const INVALID_PAYOUT_ADDRESS = "tz2LKHaHiobUKXMfJ47F7Rjxx5tu3LC35WSB";
 
 // test('Wrong payout address XTZ should not be accepted', async () => {
 //     jest.setTimeout(100000);
@@ -87,7 +90,7 @@ test('Valid payout address XTZ should be accepted', async () => {
         const digest: Buffer = Buffer.from(sha256.sha256.array(payload));
         const signature: Buffer = secp256k1.signatureExport(secp256k1.sign(digest, swapTestPrivateKey).signature);
         await swap.checkTransactionSignature(signature);
-        const params = await getSerializedAddressParameters("44'/1729'/0'/0/0");
+        const params = await getSerializedAddressParameters(DERIVATION_PATH);
         console.log(params);
         await expect(swap.checkPayoutAddress(XTZConfig, XTZConfigSignature, params.addressParameters)).resolves.toBe(undefined);
     } finally {
