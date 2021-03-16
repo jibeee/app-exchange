@@ -29,8 +29,8 @@ APPVERSION=$(APPVERSION_M).$(APPVERSION_N).$(APPVERSION_P)
 APPNAME = "Exchange"
 
 DEFINES += $(DEFINES_LIB)
-#DEFINES += TESTING
-#DEFINES += TEST_PUBLIC_KEY
+DEFINES += TESTING
+DEFINES += TEST_PUBLIC_KEY
 
 
 ifeq ($(TARGET_NAME),TARGET_NANOX)
@@ -131,13 +131,13 @@ SDK_SOURCE_PATH  += lib_ux
 endif
 
 load: all
-	python -m ledgerblue.loadApp $(APP_LOAD_PARAMS)
+	python3 -m ledgerblue.loadApp $(APP_LOAD_PARAMS)
 
 load-offline: all
-	python -m ledgerblue.loadApp $(APP_LOAD_PARAMS) --offline
+	python3 -m ledgerblue.loadApp $(APP_LOAD_PARAMS) --offline
 
 delete:
-	python -m ledgerblue.deleteApp $(COMMON_DELETE_PARAMS)
+	python3 -m ledgerblue.deleteApp $(COMMON_DELETE_PARAMS)
 
 release: all
 	export APP_LOAD_PARAMS_EVALUATED="$(shell printf '\\"%s\\" ' $(APP_LOAD_PARAMS))"; \

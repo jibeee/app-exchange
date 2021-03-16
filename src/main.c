@@ -49,7 +49,16 @@ typedef enum io_state { READY, RECEIVED, WAITING_USER } io_state_e;
 int output_length = 0;
 io_state_e io_state = READY;
 
+void debug_write(char *buf) {
+    asm volatile(
+        "movs r0, #0x04\n"
+        "movs r1, %0\n"
+        "svc      0xab\n" ::"r"(buf)
+        : "r0", "r1");
+}
+
 int recv_apdu() {
+    debug_write("-----MALLUUU----");
     PRINTF("Im inside recv_apdu\n");
     switch (io_state) {
         case READY:
@@ -81,6 +90,7 @@ int send_apdu(unsigned char *buffer, unsigned int buffer_length) {
             PRINTF("Error: Unexpected send call in READY state\n");
             return -1;
         case RECEIVED:
+            PRINTF("Ready\n");
             io_state = READY;
             return 0;
         case WAITING_USER:
