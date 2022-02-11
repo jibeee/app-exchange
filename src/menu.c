@@ -69,13 +69,13 @@ struct ValidationInfo {
     UserChoiseCallback OnReject;
 } validationInfo;
 
-unsigned int io_accept(const bagl_element_t *e) {
+static unsigned int io_accept(const bagl_element_t *e __attribute__((unused))) {
     validationInfo.OnAccept();
     ui_idle();
     return 0;
 }
 
-unsigned int io_reject(const bagl_element_t *e) {
+static unsigned int io_reject(const bagl_element_t *e __attribute__((unused))) {
     validationInfo.OnReject();
     ui_idle();
     return 0;
@@ -221,7 +221,7 @@ void io_seproxyhal_display(const bagl_element_t *element) {
     io_seproxyhal_display_default((bagl_element_t *) element);
 }
 
-unsigned char io_event(unsigned char channel) {
+unsigned char io_event(unsigned char channel __attribute__((unused))) {
     // nothing done with the event, throw an error on the transport layer if
     // needed
     // can't have more than one tag in the reply, not supported yet.

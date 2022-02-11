@@ -1,6 +1,8 @@
 #include <string.h>
 
 #include "currency_lib_calls.h"
+#include "os.h"
+#include "os_io_seproxyhal.h"
 #include "ux.h"
 
 int get_printable_amount(buf_t *coin_config,
@@ -23,7 +25,7 @@ int get_printable_amount(buf_t *coin_config,
     libcall_params[3] = 0;
     libcall_params[4] = (unsigned int) &lib_input_params;
     PRINTF("Address of printable_amount %d\n", lib_input_params.printable_amount);
-    os_memset(lib_input_params.printable_amount, 0, sizeof(lib_input_params.printable_amount));
+    memset(lib_input_params.printable_amount, 0, sizeof(lib_input_params.printable_amount));
     // Speculos workaround
     // io_seproxyhal_general_status();
     os_lib_call(libcall_params);

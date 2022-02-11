@@ -6,6 +6,8 @@
 #include "commands.h"
 #include "buffer.h"
 
-int start_signing_transaction(swap_app_context_t *ctx, const command_t *cmd, SendFunction send);
+int start_signing_transaction(swap_app_context_t *ctx,
+                              const command_t *cmd,
+                              SendFunction send __attribute__((unused)));
 
 #endif  //_START_SIGNING_TRANSACTION_H_
